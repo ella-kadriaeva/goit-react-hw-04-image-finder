@@ -5,10 +5,12 @@ import Modal from '../Modal/Modal';
 import ImageGalleryItem from 'components/ImageGalleryItem/ImageGalleryItem';
 
 export default function ImageGallery({ images }) {
+  const [tags, setTags] = useState('');
   const [largeImage, setLargeImage] = useState('');
 
   const openModal = () => largeImage => {
     setLargeImage(largeImage);
+    setTags(tags);
   };
 
   return (
@@ -26,7 +28,7 @@ export default function ImageGallery({ images }) {
       </ul>
       {largeImage && (
         <Modal onClick={openModal()}>
-          <img src={largeImage} />
+          <img src={largeImage} alt={tags} />
         </Modal>
       )}
     </>
@@ -34,9 +36,12 @@ export default function ImageGallery({ images }) {
 }
 
 ImageGallery.propTypes = {
-  images: PropTypes.shape({
-    id: PropTypes.string,
-    webformatURL: PropTypes.string,
-    tags: PropTypes.string,
-  }),
+  images: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      webformatURL: PropTypes.string,
+      tags: PropTypes.string,
+      largeImageURL: PropTypes.string,
+    })
+  ),
 };
