@@ -1,0 +1,24 @@
+.imageGallery {
+  display: grid;
+  max-width: calc(100vw - 48px);
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-gap: 16px;
+  margin-top: 5px;
+  margin-bottom: 0;
+  padding: 0;
+  list-style: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+.text {
+  border-radius: 2px;
+  color: #3f51b5;
+  text-align: center;
+  display: inline-block;
+  font-family: inherit;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 500;
+  min-width: 180px;
+  margin: 0 auto;
+}
