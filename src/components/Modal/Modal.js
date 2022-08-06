@@ -5,7 +5,7 @@ import { createPortal } from 'react-dom';
 
 const modalRoot = document.querySelector('#modal-root');
 
-export default function Modal({ onClick, children }) {
+export default function Modal({ closeModal, children }) {
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
     return () => {
@@ -15,12 +15,12 @@ export default function Modal({ onClick, children }) {
 
   const handleKeyDown = e => {
     if (e.code === 'Escape') {
-      onClick();
+      closeModal();
     }
   };
   const handleBackdropClick = e => {
     if (e.currentTarget === e.target) {
-      onClick();
+      closeModal();
     }
   };
   return createPortal(
@@ -32,6 +32,6 @@ export default function Modal({ onClick, children }) {
 }
 
 Modal.propTypes = {
-  onClick: PropTypes.func.isRequired,
+  closeModal: PropTypes.func.isRequired,
   children: PropTypes.object.isRequired,
 };

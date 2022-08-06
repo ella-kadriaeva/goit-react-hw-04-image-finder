@@ -10,8 +10,8 @@ export default function ImageGallery({ images }) {
   const openModal = () => largeImage => {
     setLargeImage(largeImage);
   };
-  const closeModal = () => {
-    setLargeImage('');
+  const forModalClose = () => {
+    setLargeImage(null);
   };
   return (
     <>
@@ -27,7 +27,7 @@ export default function ImageGallery({ images }) {
         ))}
       </ul>
       {largeImage && (
-        <Modal onClick={closeModal}>
+        <Modal onClick={openModal()} closeModal={() => forModalClose()}>
           <img src={largeImage} alt="" />
         </Modal>
       )}
