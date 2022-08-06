@@ -4,7 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import ImageGallery from '../ImageGallery/ImageGallery';
 import css from './App.module.css';
 import Loader from '../Loader/Loader';
-import imagesApi from '../services/fetchApi';
+import fetchApi from 'services/fetchApi';
 import Button from '../Button/Button';
 
 export default function App() {
@@ -47,8 +47,8 @@ export default function App() {
 
   const fetchGallery = (searchQuery, page) => {
     setStatus('pending');
-    imagesApi
-      .fetchApi(searchQuery, page)
+
+    fetchApi(searchQuery, page)
       .then(data => data.hits)
       .then(images => {
         if (images.length === 0) {

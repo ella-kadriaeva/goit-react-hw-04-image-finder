@@ -6,7 +6,7 @@ const searchParams = new URLSearchParams({
   safesearch: true,
   per_page: 12,
 });
-function fetchApi(search, page) {
+export default function fetchApi(search, page) {
   const url = `${BASE_URL}?q=${search}&${searchParams}&page=${page}`;
   return fetch(url).then(response => {
     if (response.ok) {
@@ -15,5 +15,5 @@ function fetchApi(search, page) {
     return Promise.reject(new Error(`There are no images for your request`));
   });
 }
-const api = { fetchApi };
-export default api;
+// const api = { fetchApi };
+// export default api;
