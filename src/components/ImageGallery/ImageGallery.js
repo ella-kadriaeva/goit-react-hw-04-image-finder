@@ -10,7 +10,7 @@ export default function ImageGallery({ images }) {
   const openModal = () => largeImage => {
     setLargeImage(largeImage);
   };
-  const forModalClose = () => {
+  const closeModal = () => {
     setLargeImage(null);
   };
   return (
@@ -27,13 +27,43 @@ export default function ImageGallery({ images }) {
         ))}
       </ul>
       {largeImage && (
-        <Modal onClick={openModal()} closeModal={() => forModalClose()}>
+        <Modal closeModal={closeModal}>
           <img src={largeImage} alt="" />
         </Modal>
       )}
     </>
   );
 }
+// export default function ImageGallery({ images }) {
+//   const [modal, setModal] = useState({ largeImageURL: '', tags: '' });
+
+//   const openModal = (largeImageURL, tags) => {
+//     setModal({ largeImageURL, tags });
+//   };
+//   const closeModal = () => {
+//     setModal({ largeImageURL: null, tags: '' });
+//   };
+//   return (
+//     <>
+//       <ul className={css.imageGallery}>
+//         {images.map(({ webformatURL, id, tags, largeImageURL }) => (
+//           <ImageGalleryItem
+//             key={id}
+//             onClickGalleryItem={openModal()}
+//             webformatURL={webformatURL}
+//             tags={tags}
+//             largeImage={largeImageURL}
+//           />
+//         ))}
+//       </ul>
+//       {modal.largeImageURL && (
+//         <Modal closeModal={closeModal}>
+//           <img src={modal.largeImageURL} alt={modal.tags} />
+//         </Modal>
+//       )}
+//     </>
+//   );
+// }
 
 ImageGallery.propTypes = {
   images: PropTypes.arrayOf(
