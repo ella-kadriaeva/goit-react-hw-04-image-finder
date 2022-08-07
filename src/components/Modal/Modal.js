@@ -25,7 +25,7 @@ export default function Modal({ closeModal, children }) {
   };
   return createPortal(
     <div className={css.overlay} onClick={handleBackdropClick}>
-      <div className={css.modal}>{children}</div>
+      <div>{children}</div>
     </div>,
     modalRoot
   );
